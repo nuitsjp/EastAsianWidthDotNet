@@ -1,0 +1,73 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#@ import namespace="System.Globalization" #> 
+<#
+    var notEastAsiaPrefixes =
+        new[]
+        {
+            // Cyrillic
+            "ru", // Russian
+            "uk", // Ukrainian
+            "be", // Belarusian
+            "bg", // Bulgarian
+            "mk", // Macedonian
+            "az-Cyrl", // Azerbaijani (Cyrillic)
+            "bs-Cyrl", // Bosnian (Cyrillic)
+            "mn-Cyrl", // Mongolian
+            "sr-Cyrl", // Serbian (Cyrillic)
+            "tg-Cyrl", // Tajik (Cyrillic)
+            "uz-Cyrl", // Uzbek (Cyrillic)
+            "os", // Ossetic
+
+            // Greek
+            "el", // Greek
+        };
+    var eastAsiaCultureInfos = new HashSet<CultureInfo>();
+    foreach (var notEastAsiaPrefix in notEastAsiaPrefixes)
+    {
+        var cultureInfos =
+            CultureInfo
+                .GetCultures(CultureTypes.AllCultures)
+                .Where(x => x.Name == notEastAsiaPrefix || x.Name.StartsWith(notEastAsiaPrefix + "-"));
+        foreach (var cultureInfo in cultureInfos)
+        {
+            eastAsiaCultureInfos.Add(cultureInfo);
+        }
+    }
+#>
+using System.Collections.Generic;
+using System.Globalization;
+
+namespace EastAsianWidthDotNet
+{
+    /// <summary>
+    /// East Asia in EastAsianWidth.
+    /// </summary>
+    public static partial class EastAsia
+    {
+        /// <summary>
+        /// Not in East Asia CultureInfo.
+        /// </summary>
+        private static readonly HashSet<string> NotEastAsiaNames = 
+            new HashSet<string>(
+                new []
+                {
+<# 
+    foreach (var eastAsiaCultureInfo in eastAsiaCultureInfos)
+    {
+#>
+                    "<#= eastAsiaCultureInfo.Name #>", // <#= eastAsiaCultureInfo.EnglishName #>
+<# 
+    }
+#>
+                });
+    }
+}

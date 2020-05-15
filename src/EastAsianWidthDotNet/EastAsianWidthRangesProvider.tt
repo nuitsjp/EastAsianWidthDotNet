@@ -1,0 +1,62 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="NetStandard" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="System.Net.Http" #>
+<#@ Assembly Name="$(SolutionDir)UnicodeDictionaryDotNet\bin\Debug\netstandard2.0\UnicodeDictionaryDotNet.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Net.Http" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#@ import namespace="EastAsianWidthDotNet" #> 
+<#@ import namespace="UnicodeDictionaryDotNet" #> 
+<#
+    var task =  UnicodeDictionary.GetEastAsianWidthRangesAsync();
+    task.Wait();
+    IEnumerable<EastAsianWidthRange> ranges = task.Result;
+#>
+using System;
+
+namespace EastAsianWidthDotNet{
+
+    /// <summary>
+    /// Provide EastAsianWidthRange.
+    /// </summary>
+    public class EastAsianWidthRangesProvider : IEastAsianWidthRangesProvider {
+        
+        /// <summary>
+        /// Lazy initialized EastAsianWidthRange array.
+        /// </summary>
+        private readonly Lazy<EastAsianWidthRange[]> _lazy = new Lazy<EastAsianWidthRange[]>(Create);
+
+        /// <summary>
+        /// Resolve the EastAsianWidthRange.
+        /// </summary>
+        /// <returns></returns>
+        public EastAsianWidthRange[] Resolve() => _lazy.Value;
+
+        /// <summary>
+        /// Create the EastAsianWidthRange.
+        /// </summary>
+        /// <returns></returns>
+        private static EastAsianWidthRange[] Create()
+        {
+            return new []
+            {
+<# 
+    foreach (var range in ranges)
+    {
+#>
+                new EastAsianWidthRange(<#= range.Start #>, <#= range.End #>, EastAsianWidthKind.<#= range.Kind #>),
+<#
+    }
+#>
+            };
+        }
+    }
+
+}

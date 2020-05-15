@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="EastAsia.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EastAsia.cs</LastGenOutput>
+    </None>
+    <None Update="EastAsianWidthRangesProvider.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EastAsianWidthRangesProvider.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="EastAsia.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EastAsia.tt</DependentUpon>
+    </Compile>
+    <Compile Update="EastAsianWidthRangesProvider.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EastAsianWidthRangesProvider.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
