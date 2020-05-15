@@ -27,13 +27,13 @@ namespace EastAsianWidthDotNet.Test
             [Fact]
             public void WhenTrue()
             {
-                Assert.True(EastAsia.IsEastAsia(CultureInfo.GetCultureInfo("ja-JP")));
+                Assert.True(CultureInfo.GetCultureInfo("ja-JP").IsEastAsia());
             }
 
             [Fact]
             public void WhenFalse()
             {
-                Assert.False(EastAsia.IsEastAsia(CultureInfo.GetCultureInfo("ru-RU")));
+                Assert.False(CultureInfo.GetCultureInfo("ru-RU").IsEastAsia());
             }
         }
     }

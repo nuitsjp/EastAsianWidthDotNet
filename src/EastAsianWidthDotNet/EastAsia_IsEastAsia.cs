@@ -10,7 +10,7 @@ namespace EastAsianWidthDotNet
         /// <returns></returns>
         public static bool IsEastAsia()
         {
-            return IsEastAsia(CultureInfo.CurrentUICulture);
+            return CultureInfo.CurrentUICulture.IsEastAsia();
         }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace EastAsianWidthDotNet
         /// </summary>
         /// <param name="cultureInfo"></param>
         /// <returns></returns>
-        public static bool IsEastAsia(CultureInfo cultureInfo)
+        public static bool IsEastAsia(this CultureInfo cultureInfo)
         {
             return !NotEastAsiaNames.Contains(cultureInfo.Name);
         }
