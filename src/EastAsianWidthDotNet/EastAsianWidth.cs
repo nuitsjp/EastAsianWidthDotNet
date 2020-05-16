@@ -40,7 +40,7 @@ namespace EastAsianWidthDotNet
         /// <param name="value"></param>
         /// <param name="cultureInfo"></param>
         /// <returns></returns>
-        public int GetWidth(string value, CultureInfo cultureInfo) => GetWidth(value, EastAsia.IsEastAsia(cultureInfo));
+        public int GetWidth(string value, CultureInfo cultureInfo) => GetWidth(value, cultureInfo.IsEastAsia());
 
         /// <summary>
         /// Get the width of the string considering EastAsianWidth by specifying whether it is East Asia.
@@ -71,7 +71,7 @@ namespace EastAsianWidthDotNet
         /// <param name="value"></param>
         /// <param name="cultureInfo"></param>
         /// <returns></returns>
-        public bool IsFullWidth(char value, CultureInfo cultureInfo) => IsFullWidth(value, EastAsia.IsEastAsia(cultureInfo));
+        public bool IsFullWidth(char value, CultureInfo cultureInfo) => IsFullWidth(value, cultureInfo.IsEastAsia());
 
         /// <summary>
         /// Indicates whether this character is Full Width by specifying whether it is East Asia.
@@ -99,7 +99,7 @@ namespace EastAsianWidthDotNet
         /// <param name="value"></param>
         /// <returns></returns>
         public EastAsianWidthKind GetKind(char value)
-            => GetKind((int)value, 0, _ranges.Length);
+            => GetKind(value, 0, _ranges.Length);
 
         /// <summary>
         /// Get the EastAsianWidthKind of the character.
