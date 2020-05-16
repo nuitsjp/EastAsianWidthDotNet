@@ -3,13 +3,17 @@ using Xunit;
 
 namespace EastAsianWidthDotNet.Test
 {
+#if netcoreapp31
     [Collection("Depends on CultureInfo.CurrentUICulture")]
+#endif
     public class StringExtensionsTest
     {
         [Fact]
         public void GetWidthString()
         {
+#if netcoreapp31
             CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("ja-JP");
+#endif
             Assert.Equal(3, "1○".GetWidth());
         }
 
@@ -28,8 +32,10 @@ namespace EastAsianWidthDotNet.Test
         [Fact]
         public void IsFullWidth()
         {
-            CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("el-CY");
-            Assert.False('○'.IsFullWidth());
+#if netcoreapp31
+            CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("zh-TW");
+#endif
+            Assert.True('○'.IsFullWidth());
         }
 
         [Fact]

@@ -5,19 +5,24 @@ namespace EastAsianWidthDotNet.Test
 {
     namespace EastAsianWidthTest
     {
+#if netcoreapp31
         [Collection("Depends on CultureInfo.CurrentUICulture")]
+#endif
         public class GetWidthString
         {
             [Fact]
             public void WhenIaAsian()
             {
+#if netcoreapp31
                 CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("ja-JP");
+#endif
                 var eastAsianWidth = new EastAsianWidth(new TestProvider());
 
                 string value = new string(new[] { (char)0, (char)3 });
                 Assert.Equal(3, eastAsianWidth.GetWidth(value));
             }
 
+#if netcoreapp31
             [Fact]
             public void WhenIsNotAsian()
             {
@@ -27,6 +32,7 @@ namespace EastAsianWidthDotNet.Test
                 string value = new string(new[] { (char)0, (char)3 });
                 Assert.Equal(2, eastAsianWidth.GetWidth(value));
             }
+#endif
 
             private class TestProvider : IEastAsianWidthRangesProvider
             {
@@ -119,18 +125,23 @@ namespace EastAsianWidthDotNet.Test
             }
         }
 
+#if netcoreapp31
         [Collection("Depends on CultureInfo.CurrentUICulture")]
+#endif
         public class IsFullWidth
         {
             [Fact]
             public void WhenAsian()
             {
+#if netcoreapp31
                 CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("ja-JP");
+#endif
 
                 var eastAsianWidth = new EastAsianWidth(new TestProvider());
                 Assert.True(eastAsianWidth.IsFullWidth((char)0));
             }
 
+#if netcoreapp31
             [Fact]
             public void WhenNotAsian()
             {
@@ -139,6 +150,7 @@ namespace EastAsianWidthDotNet.Test
                 var eastAsianWidth = new EastAsianWidth(new TestProvider());
                 Assert.False(eastAsianWidth.IsFullWidth((char)0));
             }
+#endif
 
 
             private class TestProvider : IEastAsianWidthRangesProvider
