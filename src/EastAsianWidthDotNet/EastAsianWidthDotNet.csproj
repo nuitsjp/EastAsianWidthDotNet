@@ -13,6 +13,7 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>EastAsianWidth</PackageTags>
     <PackageReleaseNotes>https://github.com/nuitsjp/EastAsianWidthDotNet/releases</PackageReleaseNotes>
+    <PackageIcon>nuits.jp.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +24,10 @@
     <None Update="EastAsianWidthRangesProvider.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EastAsianWidthRangesProvider.cs</LastGenOutput>
+    </None>
+    <None Include="nuits.jp.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
