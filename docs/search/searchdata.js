@@ -1,7 +1,7 @@
 var indexSectionsWithContent =
 {
   0: "egikrs",
-  1: "ei",
+  1: "eis",
   2: "e",
   3: "egir",
   4: "i",

@@ -2,7 +2,7 @@
 
 namespace EastAsianWidthDotNet
 {
-    public static class EastAsianWidthExtensions
+    public static class StringExtensions
     {
         /// <summary>
         /// Get the width of the string considering EastAsianWidth.

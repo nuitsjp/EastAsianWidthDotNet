@@ -4,7 +4,7 @@ using Xunit;
 namespace EastAsianWidthDotNet.Test
 {
     [Collection("Depends on CultureInfo.CurrentUICulture")]
-    public class EastAsianWidthExtensionsTest
+    public class StringExtensionsTest
     {
         [Fact]
         public void GetWidthString()
