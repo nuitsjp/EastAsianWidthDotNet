@@ -1,5 +1,4 @@
-﻿using System;
-using EastAsianWidthDotNet;
+﻿using EastAsianWidthDotNet;
 using Xunit;
 
 namespace UnicodeDictionaryDotNet.Test
