@@ -1,8 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net40;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Atsushi Nakamura</Authors>
+    <Company>Atsushi Nakamura</Company>
+    <Description>A library to get the character width considering EastAsianWidth.</Description>
+    <Copyright>Copyright 2020 Atsushi Nakamura</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/nuitsjp/EastAsianWidthDotNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nuitsjp/EastAsianWidthDotNet</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>EastAsianWidth</PackageTags>
+    <PackageReleaseNotes>https://github.com/nuitsjp/EastAsianWidthDotNet/releases</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
