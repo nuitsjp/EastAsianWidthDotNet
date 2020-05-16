@@ -13,7 +13,7 @@ namespace EastAsianWidthDotNet
             EastAsianWidth.Instance.GetWidth(value);
 
         /// <summary>
-        /// Gets the width of the string considering EastAsianWidth by specifying CultureInfo.
+        /// Get the width of the string with respect to EastAsianWidth, according to CultureInfo.CurrentUICulture.
         /// </summary>
         /// <param name="value"></param>
         /// <param name="cultureInfo"></param>
