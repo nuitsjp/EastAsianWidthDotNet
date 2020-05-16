@@ -1,1 +1,1 @@
-# Nuits.EastAsianWidth
+# EastAsianWidth
