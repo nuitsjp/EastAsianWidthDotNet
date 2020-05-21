@@ -14,6 +14,7 @@
     <PackageTags>EastAsianWidth</PackageTags>
     <PackageReleaseNotes>https://github.com/nuitsjp/EastAsianWidthDotNet/releases</PackageReleaseNotes>
     <PackageIcon>nuits.jp.png</PackageIcon>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -20,7 +20,7 @@ In EAST ASIAN WIDTH, there is a kind called "Ambiguous", whose width varies depe
 
 Ambiguous should be a full-width character in East Asia. But outside of East Asia, it is a narrow.
 
-EastAsianWidthDotNet uses CultureInfo to determine this. [This local](https://github.com/nuitsjp/EastAsianWidthDotNet/blob/master/src/EastAsianWidthDotNet/EastAsia.cs#L20) is a non-East Asian. All other locales are assumed to be East Asian.
+EastAsianWidthDotNet uses CultureInfo to determine this. [This local](https://github.com/nuitsjp/EastAsianWidthDotNet/blob/master/src/EastAsianWidthDotNet/EastAsia.cs#L20) is a East Asian.
 
 You can specify whether it is explicitly East Asian or not, or you can specify CultureInfo. If not specified, CultureInfo.CurrentUICulture will be applied.
 

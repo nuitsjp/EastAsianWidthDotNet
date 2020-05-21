@@ -18,9 +18,11 @@ EAST ASIAN WIDTHには全角・半角が文脈によって変化する「Ambiguo
 
 Ambiguousは、東アジアの場合は全角として、東アジア以外の場合は半角として扱う必要があります。
 
-EastAsianWidthDotNetではCultureInfoによって判断しています。EastAsianWidthDotNetでは[こちらのロケール](https://github.com/nuitsjp/EastAsianWidthDotNet/blob/master/src/EastAsianWidthDotNet/EastAsia.cs#L20)を東アジア以外として判断しており、それ以外のロケールを東アジアとして判断します。
+EastAsianWidthDotNetではCultureInfoによって判断しています。EastAsianWidthDotNetでは[こちらのロケール](https://github.com/nuitsjp/EastAsianWidthDotNet/blob/master/src/EastAsianWidthDotNet/EastAsia.cs#L20)を東アジアとして判断します。
 
-明示的に東アジアか否か、もしくはCultureInfoを指定できます。未指定の場合、CultureInfo.CurrentUICultureが適用されます。
+CultureInfoを明示的に指定することもできますが、未指定の場合、CultureInfo.CurrentUICultureが適用されます。
+
+また明示的に東アジアか否か指定することも可能です。
 
 ## API Reference
 
