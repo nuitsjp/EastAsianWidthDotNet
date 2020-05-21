@@ -10,6 +10,22 @@
 <#@ import namespace="System.Collections.Generic" #> 
 <#@ import namespace="System.Globalization" #> 
 <#
+    var eastAsiaPrefixes =
+	    new[]
+	    {
+                "ja", // Japanese
+                "ko", // Korean
+                "vi", // Vietnamese
+			    "zh", // Chinese
+	    };
+    var eastAsiaCultureInfos =
+	    eastAsiaPrefixes
+		    .SelectMany(eastAsiaPrefixe => 
+			    CultureInfo
+				    .GetCultures(CultureTypes.AllCultures)
+				    .Where(x => x.Name == eastAsiaPrefixe || x.Name.StartsWith(eastAsiaPrefixe + "-")))
+		    .OrderBy(x => x.Name);
+
     var notEastAsiaPrefixes =
         new[]
         {
@@ -22,26 +38,18 @@
             "az-Cyrl", // Azerbaijani (Cyrillic)
             "bs-Cyrl", // Bosnian (Cyrillic)
             "mn-Cyrl", // Mongolian
+            "ro-MD", // Romanian (Moldova)
             "sr-Cyrl", // Serbian (Cyrillic)
             "tg-Cyrl", // Tajik (Cyrillic)
             "uz-Cyrl", // Uzbek (Cyrillic)
             "os", // Ossetic
+            "ce", // Chechen
+            "az-Cyrl", // Azerbaijani (Cyrillic)
+            "ky", // Kyrgyz
 
             // Greek
             "el", // Greek
         };
-    var eastAsiaCultureInfos = new HashSet<CultureInfo>();
-    foreach (var notEastAsiaPrefix in notEastAsiaPrefixes)
-    {
-        var cultureInfos =
-            CultureInfo
-                .GetCultures(CultureTypes.AllCultures)
-                .Where(x => x.Name == notEastAsiaPrefix || x.Name.StartsWith(notEastAsiaPrefix + "-"));
-        foreach (var cultureInfo in cultureInfos)
-        {
-            eastAsiaCultureInfos.Add(cultureInfo);
-        }
-    }
 #>
 using System.Collections.Generic;
 using System.Globalization;
@@ -54,9 +62,9 @@ namespace EastAsianWidthDotNet
     public static partial class EastAsia
     {
         /// <summary>
-        /// Not in East Asia CultureInfo.
+        /// East Asia CultureInfo.
         /// </summary>
-        private static readonly HashSet<string> NotEastAsiaNames = 
+        private static readonly HashSet<string> EastAsiaNames = 
             new HashSet<string>(
                 new []
                 {

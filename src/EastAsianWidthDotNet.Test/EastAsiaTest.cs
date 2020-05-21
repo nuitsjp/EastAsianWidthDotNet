@@ -29,6 +29,7 @@ namespace EastAsianWidthDotNet.Test
         public class IsEastAsiaCultureInfo
         {
             [Fact]
+
             public void WhenTrue()
             {
                 Assert.True(CultureInfo.GetCultureInfo("ja-JP").IsEastAsia());
@@ -38,6 +39,7 @@ namespace EastAsianWidthDotNet.Test
             public void WhenFalse()
             {
                 Assert.False(CultureInfo.GetCultureInfo("ru-RU").IsEastAsia());
+                Assert.False(CultureInfo.GetCultureInfo("en-US").IsEastAsia());
             }
         }
     }

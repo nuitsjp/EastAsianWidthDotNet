@@ -16,6 +16,7 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
     <PackageReference Include="xunit" Version="1.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.0.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
